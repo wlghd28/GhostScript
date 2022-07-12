@@ -1,0 +1,22 @@
+고스트 스크립트 실행방법
+1. cmd 창을 띄운 후 C:\Program Files\gs\(사용중인 gs버전)\bin 경로로 간다. (환경변수 추가 해줘도 됨)
+2. 64비트 운영체제 MS windows 의 경우 gswin64 ~~~ 식으로 명령하면 된다.
+3. 리눅스 환경일 경우 gs ~~~ 식으로 명령하면 된다.
+4. 사용법 링크 https://www.ghostscript.com/doc/current/Use.htm
+
+고스트 스크립트에 대한 내용
+1. Ghostscript를 사용하면 PDF / A 변환을 제외하고 현재 출력 PDF에 특정 ICC 프로필을 포함 할 수 없다.
+2. 오픈소스 깃허브 다운 (https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/tag/gs9533)
+3. 오픈소스 내려받는 명령 (git clone git://git.ghostscript.com/ghostpdl.git)
+4. 소스코드에서 Ghostscript를 빌드하는 방법 (http://gensoft.pasteur.fr/docs/ghostscript/9.20/Make.htm#Microsoft_build_64)
+
+고스트 스크립트 명령 (64bits MS windows)
+1. CMYK 색상분리 파일 생성 (-r은 해상도 옵션)
+    - gswin64 -sDEVICE=tiffsep -r600 -sOutputFile=D:\gs_images\sample-1.tif D:\gs_images\sample-1.pdf
+2. ICC 프로파일 적용 옵션
+    -sDefaultGrayProfile = my_gray_profile.icc
+    -sDefaultRGBProfile = my_rgb_profile.icc
+    -sDefaultCMYKProfile = my_cmyk_profile.icc
+
+
+gswin64 -sDEVICE=tiffsep -r600 -sDefaultRGBProfile=..\iccprofiles\sRGB.icc -sDefaultCMYKProfile=..\iccprofiles\ICC_Profile_Table.icc -sOutputFile=D:\gs_images\323test1.tif D:\gs_images\323test1.pdf
